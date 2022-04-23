@@ -2,31 +2,39 @@
 //while creating the user add details section 
 
 require_once '../server/DbOperations.php';
-if($_SERVER['REQUEST_METHOD']== 'POST'){
+$response = array();
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
     if(
-        isset($_POST['username']and 
+        isset($_POST['username'])and 
         isset($_POST['password']))
-    ){
+    {
         //update data
+        $db = new DbOperations();
+
         if($db->CreateUser(
             $_POST['username'],
             $_POST['password']
-        )){
-        $response['error' ] = false;
-        $response['message' ] = "user registered";
+            )){
+        $response['error'] = false;
+        $response['message'] = "user registered";
+        }else{
+        $response['error'] = true;
+        $response['message'] = "some err occurred";
         }
 
 
 
     }else{
         //missing values
-        $response['error' ] = true;
-        $response['message' ] = "req fields are missing";
+        $response['error'] = true;
+        $response['message'] = "req fields are missing";
     }
 
+
 }else{
-    $response['error' ] = true;
-    $response['message' ] = "Invalid Request";
+    $response['error'] = true;
+   $response['message'] = "Invalid Request";
 
 }
 

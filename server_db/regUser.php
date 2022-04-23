@@ -27,5 +27,8 @@ $query->execute();
 
 $json_response = json_encode($response);
 echo $json_response;
+/**
+ * connect to android studio
+ */
 
 ?>

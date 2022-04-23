@@ -4,15 +4,27 @@ include("db_connect.php");
 
 
 $username = $_GET["username"] ??"" ;
-$password = $_GET["password"] ??"";
+$password = $_GET["pass"] ??"";
+$response = [];
 
-$query = $mysqli->prepare("INSERT INTO user (username, password) VALUES (?, ?);");
+
+if(
+   (!empty($username)) and 
+   ( !empty($password)))
+   // $paass = md5($pass);
+{$query = $mysqli->prepare("INSERT INTO user (username, pass) VALUES (?, ?);");
 $query->bind_param("ss", $username, $password);
 $query->execute();
+    $response['error'] = false;
+    $response['message'] = "user registered";
+    }else {
+        
+    $response['error'] = true;
+    $response['message'] = "some err occurred";
+    }
 
-$response = [];
-$response["status"] = "obtained";
-//echo $rate * $amount_rec;
+
+
 $json_response = json_encode($response);
 echo $json_response;
 

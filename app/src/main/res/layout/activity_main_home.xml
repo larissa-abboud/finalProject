@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainHome">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/muki1"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="433dp" />
+
+    <Button
+        android:id="@+id/log_in"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="135dp"
+        android:layout_height="89dp"
+        android:backgroundTint="#050817"
+        android:fontFamily="sans-serif-black"
+        android:text="LOG IN"
+
+        android:textSize="24sp"
+        app:iconTint="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.414"
+        app:rippleColor="#3F51B5" />
+
+    <Button
+        android:id="@+id/sign_up"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="135dp"
+        android:layout_height="89dp"
+        android:backgroundTint="#050817"
+        android:fontFamily="sans-serif-black"
+        android:text="SIGN UP"
+
+        android:textSize="24sp"
+        app:iconTint="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.177"
+        app:rippleColor="#3F51B5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

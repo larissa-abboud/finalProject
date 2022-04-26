@@ -18,20 +18,9 @@ function ObtainIdOfUser($user_obtained){
             $table_id = $row['id'];
 
         }
-       /* if($user_obtained = $table_username){
-            $response['error'] = false;
-        $response['message'] = "user found of id  = ".$table_id;
-        }
-        else{
-            $response['error'] = true;
-            $response['message'] = "user not found";
-        }*/
+       
     }
-    //$response['error'] = false;
-    //  $response['message'] = $user_obtained;
-   // $json_response = json_encode($response);
-    //echo $json_response;
-   // echo $table_id;
+   
     return $table_id;
 
  

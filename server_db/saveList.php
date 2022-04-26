@@ -4,6 +4,10 @@
 include("db_connect.php");
 include("getUserOfList.php");
 $name = "admin2";// obtain from android studio
+/**create table that stores username of curently loggen in user.
+ * when we want to perform any action , get latest entry , retrun as is
+ * 
+ */
 
 $handyperson = $_GET["handy_person"] ??"" ;
 $user_l = ObtainIdOfUser($name); //return id of user logged in

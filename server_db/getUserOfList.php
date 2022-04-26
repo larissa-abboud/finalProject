@@ -30,7 +30,7 @@ function ObtainIdOfUser($user_obtained){
 
 
 /**
- * obtain username from android studio
+ * obtain username from android studio[cannot obtain then add to databse temporary and extract from it]
  * serach threw the databe for user name
  * return id of username to ssavelist 
  */

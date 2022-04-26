@@ -6,7 +6,7 @@ include("getUserOfList.php");
 $name = "admin2";// obtain from android studio
 
 $handyperson = $_GET["handy_person"] ??"" ;
-$user_l = ObtainIdOfUser($name);
+$user_l = ObtainIdOfUser($name); //return id of user logged in
 //$userlist = $_GET["user_list"] ??"";
 $response = [];
 if(

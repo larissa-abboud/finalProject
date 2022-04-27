@@ -3,7 +3,7 @@
 
 include("db_connect.php");
 include("getUserOfList.php");
-$name = "admin2";// obtain from android studio
+$name = "admin2";// obtain from android studio(let create extra api that posts logged in user and return it )
 /**create table that stores username of curently loggen in user.
  * when we want to perform any action , get latest entry , retrun as is
  * 

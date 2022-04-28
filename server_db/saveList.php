@@ -3,10 +3,11 @@
 
 include("db_connect.php");
 include("getUserOfList.php");
-$name = "admin2";// obtain from android studio(let create extra api that posts logged in user and return it )
+$name = getCurrentUser();
+//echo $name;
 /**create table that stores username of curently loggen in user.
  * when we want to perform any action , get latest entry , retrun as is
- * 
+ * so the it is a post api that recived the userand adds it to the databse
  */
 
 $handyperson = $_GET["handy_person"] ??"" ;

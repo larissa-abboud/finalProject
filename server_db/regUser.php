@@ -1,5 +1,5 @@
 <?php
-// send data to the database and obtaining the results
+// send data(user name and password to register user) to the database and obtaining the results
 include("db_connect.php");
 
 

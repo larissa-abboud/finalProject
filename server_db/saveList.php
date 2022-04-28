@@ -1,13 +1,16 @@
 <?php
 // save favorit user in databse  to show in saved section
+//post api : send to databse the handy person as post and username from logged in
+
 
 include("db_connect.php");
 include("getUserOfList.php");
 $name = getCurrentUser();
-//echo $name;
-/**create table that stores username of curently loggen in user.
+
+/**created table that stores username of curently loggen in user.
  * when we want to perform any action , get latest entry , retrun as is
- * so the it is a post api that recived the userand adds it to the databse
+ * so  it is an api that recives the user and adds it to the databse
+ * and another that obtains the id since the input is a varchar to match with the fk and add it in the database
  */
 
 $handyperson = $_GET["handy_person"] ??"" ;

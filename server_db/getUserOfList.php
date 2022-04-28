@@ -1,12 +1,15 @@
-<?php session_start();
+<?php 
+//helper methods
+/** get the current user logged in
+ *  get the  id of a user 
+ */
+//session_start();
 $response = [];
 function ObtainIdOfUser($user_obtained){
+    //get method: return id 
     
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
-    //$user_obtained = "admin2";
-    //$username = mysqli_real_escape_string($mysqli , $_POST['username']);
-   
-
+    
     //connect to server;
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
     $query = mysqli_query($mysqli , "SELECT * from user where username = '$user_obtained' ");
@@ -28,7 +31,8 @@ function ObtainIdOfUser($user_obtained){
 
  }
  function getCurrentUser(){
-    //session_start();
+     //get method : return username
+    
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     //$user_obtained = "admin2";
     //$username = mysqli_real_escape_string($mysqli , $_POST['username']);
@@ -42,14 +46,14 @@ function ObtainIdOfUser($user_obtained){
     $row = mysqli_fetch_assoc($query);
 
     $table_usernam = "";
-    //$table_usernam = "";
+    //$table[$key] ?? null;
     $table_id = 0;
     if($exist > 0  ){
         while($row = mysqli_fetch_assoc($query)and $id <=$table_id ){
             
             $table_usernam = $row['username'];
             $id = $table_id;
-            $table_id = $row['id'];
+            $table_id = $row['id']?? null;
 
         }
        
@@ -66,8 +70,8 @@ function ObtainIdOfUser($user_obtained){
 
 
 /**
- * obtain username from android studio[cannot obtain then add to databse temporary and extract from it]
+ * obtain username from databse 
  * serach threw the databe for user name
- * return id of username to ssavelist 
+ * return id of username to savelist 
  */
 ?>

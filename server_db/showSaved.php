@@ -13,7 +13,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
 
 
     $response = [];
-    $response['handy ']="";
+   // $response['handy ']="";
     $count = 0;
 
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
@@ -21,18 +21,19 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
     $exist = mysqli_num_rows($query);
     $row = mysqli_fetch_assoc($query);
     //$table_handy_person = "";
-    $table_id = "2";
+    $table_id = "0";
     if($exist > 0 ){
         $table_id = $row['user_list'];
-        echo $table_id;
+       // echo $table_id;
         while($row = mysqli_fetch_assoc($query)  ){
-            $count++;
+            
             
             $table_id = $row['user_list'];
             if($table_id == $id_current_user){
+                $count++;
             $table_handy_person = $row['handy_person']?? null;
             //echo $table_handy_person;
-             $response['handy'] = $table_handy_person;
+             $response[$count] = $table_handy_person;
              
         //
             

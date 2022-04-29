@@ -3,11 +3,11 @@
 /** get the current user logged in
  *  get the  id of a user 
  */
-//session_start();
+
 $response = [];
 function ObtainIdOfUser($user_obtained){
     //get method: return id 
-    
+    //session_start();
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
     //connect to server;

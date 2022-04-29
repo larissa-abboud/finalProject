@@ -1,4 +1,5 @@
 <?php
+//post api send
 // send data(user name and password to register user) to the database and obtaining the results
 include("db_connect.php");
 
@@ -16,11 +17,12 @@ if(
 $query->bind_param("ss", $username, $password);
 $query->execute();
     $response['error'] = false;
-    $response['message'] = "user registered";
+    $response['message'] = "user registered";$response['m'] = "some occurred";
     }else {
         
     $response['error'] = true;
     $response['message'] = "some err occurred";
+    
     }
 
 

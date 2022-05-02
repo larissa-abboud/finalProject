@@ -6,18 +6,20 @@ include("db_connect.php");
 
 $username = $_GET["username"] ??"" ;
 $password = $_GET["pass"] ??"";
+$name = $_GET["full_name"] ??"" ;
+$bio = $_GET["bio"] ??"";
 $response = [];
 
 
 if(
    (!empty($username)) and 
-   ( !empty($password)))
+   ( !empty($password))and ( !empty($name)))
    // $paass = md5($pass);
-{$query = $mysqli->prepare("INSERT INTO user (username, pass) VALUES (?, ?);");
-$query->bind_param("ss", $username, $password);
+{$query = $mysqli->prepare("INSERT INTO user (username, pass,full_name , bio) VALUES (?, ?,?,?);");
+$query->bind_param("ss", $username, $password,$name , $bio);
 $query->execute();
     $response['error'] = false;
-    $response['message'] = "user registered";$response['m'] = "some occurred";
+    $response['message'] = "user registered";
     }else {
         
     $response['error'] = true;

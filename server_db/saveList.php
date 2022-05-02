@@ -14,6 +14,7 @@ $name = getCurrentUser();
  */
 
 $handyperson = $_GET["handy_person"] ??"" ;
+
 $user_l = ObtainIdOfUser($name); //return id of user logged in
 //$userlist = $_GET["user_list"] ??"";
 $response = [];

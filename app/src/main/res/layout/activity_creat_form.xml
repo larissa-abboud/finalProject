@@ -100,7 +100,7 @@
         app:srcCompat="@drawable/framlong" />
 
     <Button
-        android:id="@+id/createForm"
+        android:id="@+id/goBack"
         android:layout_width="164dp"
         android:layout_height="74dp"
         android:backgroundTint="#050817"

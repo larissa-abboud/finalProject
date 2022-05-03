@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".saved_users">
-
+    tools:context=".handyperson">
     <Button
-        android:id="@+id/showsaved"
+        android:id="@+id/showusers"
         android:layout_width="278dp"
         android:layout_height="74dp"
         android:backgroundTint="#071142"
         android:fontFamily="sans-serif-black"
-        android:text="show saved"
+        android:text="show available handypeople"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,13 +45,13 @@
         app:srcCompat="@drawable/whitebg" />
 
     <Button
-        android:id="@+id/bookUser"
+        android:id="@+id/saveuser"
         android:layout_width="161dp"
         android:layout_height="128dp"
         android:backgroundTint="#071142"
         android:fontFamily="sans-serif-black"
-        android:onClick="creat_form_to_book"
-        android:text="Book appointment"
+
+        android:text="save handyperson"
         app:icon="@android:drawable/btn_star_big_on"
         app:iconTint="#AEB3D5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +71,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.331" />

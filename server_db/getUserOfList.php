@@ -30,6 +30,33 @@ function ObtainIdOfUser($user_obtained){
  
 
  }
+ function checkUserIn($table , $user){
+    $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
+    
+    
+    //connect to server;
+    mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
+    $query = mysqli_query($mysqli , "SELECT * from $table where handy_person = '$user' ");
+    $exist = mysqli_num_rows($query);
+    $table_handy = "";
+    $table_id = "";
+    if($exist > 0 ){
+        while($row = mysqli_fetch_assoc($query)){
+            $table_handy = $row['handy_person'];
+            $table_id = $row['id'];
+
+        }
+        if($table_handy == ""){
+            return $table_handy;
+        }else{
+            return "already saved";
+        }
+       
+    }
+   
+    
+
+ }
  function getCurrentUser(){
      //get method : return username
     

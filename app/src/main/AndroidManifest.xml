@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject_oddJobber">
         <activity
+            android:name=".handyperson"
+            android:exported="false" />
+        <activity
             android:name=".displayUser"
             android:exported="false" />
         <activity

@@ -22,13 +22,20 @@ if(
     (!empty($handyperson )) 
     )
     //creat another 
- {
+ {  //before we insert check if user in list
+    $check = checkUserIn("saved", $handyperson );
+    if($check == "already saved"){
+        $response['error'] = false;
+     $response['message'] = "user saved";
+
+    }
+    else{
     $query = $mysqli->prepare("INSERT INTO saved (handy_person, user_list) VALUES (?, ?);");
     $query->bind_param("si", $handyperson, $user_l);
     $query->execute();
      $response['error'] = false;
      $response['message'] = "user saved in database";
-     }else {
+     }}else {
          
      $response['error'] = true;
      $response['message'] = "some err occurred";

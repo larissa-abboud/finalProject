@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -77,7 +76,7 @@ public class displayUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user);
         display = (TextView)  findViewById(R.id.userDsiplay);
-        home = (Button) findViewById(R.id.goHome);
+        home = (Button) findViewById(R.id.gohomepage);
         displaytheuser(url);
 
     }

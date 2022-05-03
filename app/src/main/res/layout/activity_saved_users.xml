@@ -35,8 +35,8 @@
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="193dp"
-        android:layout_height="151dp"
+        android:layout_width="194dp"
+        android:layout_height="139dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/mukithanks" />
 
     <Button
-        android:id="@+id/goBack"
+        android:id="@+id/goHome"
         android:layout_width="164dp"
         android:layout_height="74dp"
         android:backgroundTint="#050817"

@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        username = (EditText) findViewById(R.id.usernametext);
-        password = (EditText) findViewById(R.id.password);
+        username = (EditText) findViewById(R.id.usernametexts);
+        password = (EditText) findViewById(R.id.passwords);
         login = (Button) findViewById(R.id.log_in);
         //String amount =  ""; //get the amount from the view
 
@@ -133,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
         downloadInfoOfWeather.execute(url, "q=select wind from weather.forecast where woeid=2460286&format=json");
 
     }
-    public void home(View view){
-        Intent intent = new Intent(getApplicationContext(), homepage.class);
+    public void display(View view){
+        Intent intent = new Intent(getApplicationContext(), displayUser.class);
         startActivity(intent);
     }
     public void signup(View view){
@@ -154,12 +154,12 @@ public class MainActivity extends AppCompatActivity {
         }else {
             username.setText("");
             password.setText("");
-            home(v);
+            display(v); //display user
         }
         /**obtain from as : username  password
          * using api , check if user reg
          * yes = go to home page
-         * no  = go to sign up with taost */
+         * no  = go to sign up with taost or stay with taost */
 
 
 

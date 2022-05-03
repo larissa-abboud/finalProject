@@ -80,11 +80,11 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796"
+        app:layout_constraintVertical_bias="0.86"
         app:rippleColor="#010419" />
 
     <EditText
-        android:id="@+id/usernametext"
+        android:id="@+id/usernametexts"
         android:layout_width="213dp"
         android:layout_height="64dp"
         android:ems="10"
@@ -98,7 +98,7 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwords"
         android:layout_width="213dp"
         android:layout_height="64dp"
         android:ems="10"

@@ -21,8 +21,9 @@
         android:layout_height="89dp"
         android:backgroundTint="#050817"
         android:fontFamily="sans-serif-black"
-        android:text="LOG IN"
+        android:onClick="Login"
 
+        android:text="LOG IN"
         android:textSize="24sp"
         app:iconTint="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,8 +41,9 @@
         android:layout_height="89dp"
         android:backgroundTint="#050817"
         android:fontFamily="sans-serif-black"
-        android:text="SIGN UP"
+        android:onClick="sin_up_user"
 
+        android:text="SIGN UP"
         android:textSize="24sp"
         app:iconTint="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"

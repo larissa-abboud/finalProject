@@ -15,8 +15,9 @@
         android:layout_height="89dp"
         android:backgroundTint="#050817"
         android:fontFamily="sans-serif-black"
-        android:text="SIGN UP"
+        android:onClick="signup"
 
+        android:text="SIGN UP"
         android:textSize="24sp"
         app:iconTint="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +29,7 @@
         app:rippleColor="#3F51B5" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwords"
         android:layout_width="213dp"
         android:layout_height="64dp"
         android:ems="10"
@@ -44,7 +45,7 @@
 
 
     <EditText
-        android:id="@+id/usernametext"
+        android:id="@+id/usernametexts"
         android:layout_width="213dp"
         android:layout_height="64dp"
         android:ems="10"

@@ -57,6 +57,33 @@ function ObtainIdOfUser($user_obtained){
     
 
  }
+ function checkUserInappointments($table , $user){
+    $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
+    
+    
+    //connect to server;
+    mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
+    $query = mysqli_query($mysqli , "SELECT * from $table where from_user = '$user' ");
+    $exist = mysqli_num_rows($query);
+    $table_handy = "";
+    $table_id = "";
+    if($exist > 0 ){
+        while($row = mysqli_fetch_assoc($query)){
+            $table_handy = $row['from_user'];
+            $table_id = $row['b_id'];
+
+        }
+        if($table_handy == ""){
+            return $table_handy;
+        }else{
+            return "already booked an appointment";
+        }
+       
+    }
+   
+    
+
+ }
  function getCurrentUser(){
      //get method : return username
     

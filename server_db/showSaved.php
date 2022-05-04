@@ -28,12 +28,13 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
         while($row = mysqli_fetch_assoc($query)  ){
             
             
+            
             $table_id = $row['user_list'];
             if($table_id == $id_current_user){
                 $count++;
             $table_handy_person = $row['handy_person']?? null;
             //echo $table_handy_person;
-             $response[$count] = $table_handy_person;
+             $response[] = $table_handy_person;
              
         //
             

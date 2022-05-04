@@ -5,23 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".handyperson">
-    <Button
-        android:id="@+id/showusers"
-        android:layout_width="278dp"
-        android:layout_height="74dp"
-        android:backgroundTint="#071142"
-        android:fontFamily="sans-serif-black"
-        android:text="show available handypeople"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
+
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imageView11"
         android:layout_width="897dp"
         android:layout_height="1160dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,48 +19,95 @@
         app:layout_constraintVertical_bias="0.748"
         app:srcCompat="@drawable/backgr" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="169dp"
-        android:layout_height="111dp"
+    <Button
+        android:id="@+id/showusers"
+        android:layout_width="278dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#071142"
+        android:fontFamily="sans-serif-black"
+        android:onClick="show_handyperson_list"
+        android:text="show available handypeople"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="162dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826"
         app:srcCompat="@drawable/whitebg" />
+
+    <ListView
+        android:id="@+id/myList"
+        android:layout_width="279dp"
+        android:layout_height="262dp"
+        android:cacheColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.315">
+
+
+    </ListView>
+
 
     <Button
         android:id="@+id/saveuser"
-        android:layout_width="161dp"
-        android:layout_height="128dp"
+        android:layout_width="130dp"
+        android:layout_height="73dp"
         android:backgroundTint="#071142"
         android:fontFamily="sans-serif-black"
 
+        android:onClick="save"
         android:text="save handyperson"
         app:icon="@android:drawable/btn_star_big_on"
+
         app:iconTint="#AEB3D5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.813" />
 
     <TextView
         android:id="@+id/user"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_width="216dp"
+        android:layout_height="24dp"
         android:fontFamily="sans-serif-black"
-        android:text="  USER"
+        android:text="choose a handyperson"
         android:textColor="#000002"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintVertical_bias="0.685" />
+
+    <Spinner
+        android:id="@+id/users_saved"
+        android:layout_width="128dp"
+        android:layout_height="38dp"
+        android:dropDownSelector="@android:drawable/btn_dropdown"
+        android:tag="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

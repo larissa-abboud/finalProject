@@ -23,7 +23,9 @@ public class creatForm extends AppCompatActivity {
         send = (Button) findViewById(R.id.gohomepage);
         Intent x = getIntent();
         String name = x.getStringExtra("username");
-        Toast.makeText(getApplicationContext(), name + "-" , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), " " , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), name + " is the handyperson" , Toast.LENGTH_LONG).show();
+
     }
     public void status(View view){
         Intent intent = new Intent(getApplicationContext(), thanksBook.class);

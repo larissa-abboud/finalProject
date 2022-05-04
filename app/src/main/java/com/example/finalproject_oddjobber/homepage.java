@@ -24,4 +24,8 @@ public class homepage extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void users(View view){
+        Intent intent = new Intent(getApplicationContext(), handyperson.class);
+        startActivity(intent);
+    }
 }

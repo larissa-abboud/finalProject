@@ -25,10 +25,11 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
     if($exist > 0 ){
         $table_id = $row['user_list'];
        // echo $table_id;
+       $response ['empty'] = "not";
        $response['handy_person'.$count] = $row['handy_person'];
        
         while($row = mysqli_fetch_assoc($query)  ){
-            $response ['empty'] = "not";
+            
             
             
             

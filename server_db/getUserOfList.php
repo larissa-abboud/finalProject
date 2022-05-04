@@ -128,4 +128,52 @@ function ObtainIdOfUser($user_obtained){
  * serach threw the databe for user name
  * return id of username to savelist 
  */
+
+ /**gets the username an pass
+  * check in user db 
+  if both then alredy reg
+  if username then username taken
+  if non then insert in db
+  */
+  $response = [];
+function checkReg($user_obtained,$user_pass){
+    //get method: return id 
+    //session_start();
+    $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
+    
+    //connect to server;
+    mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
+    $query = mysqli_query($mysqli , "SELECT username, pass from user  ");
+    $exist = mysqli_num_rows($query);
+    $table_username = "";
+    $table_pass= "";
+    $flag;
+    if($exist > 0 ){
+        while($row = mysqli_fetch_assoc($query)){
+            $table_username = $row['username'];
+            $table_pass = $row['pass'];
+            
+            if($table_username == $user_obtained and $table_pass == $user_pass ){
+                $flag = 1;
+                return $flag;
+                
+            }else if($table_username == $user_obtained ){
+                $flag = 2;
+                return $flag;
+            }else{
+                
+               $flag =3;
+               
+            }
+
+        }
+       
+    }
+   
+    return $flag;
+   //regUser.php?username=larissa123&pass=abb&full_name=larissabboud&bio=bio
+
+ 
+
+ } //echo checkReg("admin4","admin4");
 ?>

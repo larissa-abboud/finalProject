@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".saved_users">
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="897dp"
+        android:layout_height="1160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.748"
+        app:srcCompat="@drawable/backgr" />
 
 
     <TextView
@@ -23,17 +34,7 @@
         app:layout_constraintVertical_bias="0.685" />
 
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="897dp"
-        android:layout_height="1160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748"
-        app:srcCompat="@drawable/backgr" />
+
 
     <ImageButton
         android:id="@+id/imageButton4"

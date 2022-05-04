@@ -150,13 +150,15 @@ public void contt(View v){
         // api reads from edit text
        // Toast.makeText(getApplicationContext(),response , Toast.LENGTH_LONG).show();
         if(response.equalsIgnoreCase("false")){
-            //username.setText("");
-           // password.setText("");
+            username.setText("");
+            password.setText("");
             display(v);
+            cont.setAlpha(0);
 
         }else {
-            //username.setText("");
-            //password.setText("");
+            cont.setAlpha(0);
+            username.setText("");
+            password.setText("");
             if(todo.equalsIgnoreCase("incorrect username")){
                 Toast.makeText(getApplicationContext(),"incorrect username" , Toast.LENGTH_LONG).show();
             }else if(todo .equalsIgnoreCase( "incorrect password")){

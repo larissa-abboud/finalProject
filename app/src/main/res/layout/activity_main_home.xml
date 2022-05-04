@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".mainHome">
 
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
@@ -25,7 +26,7 @@
 
         android:text="LOG IN"
         android:textSize="24sp"
-        app:iconTint="#3F51B5"
+        app:iconTint="#0B1860"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.463"

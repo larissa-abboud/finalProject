@@ -38,6 +38,7 @@ public class saved_users extends AppCompatActivity {
     String result;
     String[] response;
     int size;
+    boolean flag ;
     public  class DownloadTask extends AsyncTask<String, Void, String> {
         //run in parallel with the app
         protected String doInBackground(String... urls){
@@ -89,14 +90,29 @@ public class saved_users extends AppCompatActivity {
                 //parse data
 
                 JSONObject json = new JSONObject(s);
+                String check = json.getString("empty");
+                if(check.equalsIgnoreCase("empty")){
+                    Log.i("list", check);
+                    flag = true;}
+                else{
+                    //flag = true;
+                    Log.i("list", check);
                 size = json.length();
-                response = new String[size];
-                while( x < json.length()){
+                response = new String[size-1];// -1 to not get null pointer in list view
+                while( x < json.length()-1) {
                     //fix
 
-                    x++;String result = json.getString("handy_person"+x);
+                    x++;
+                    String result = json.getString("handy_person" + x);
                     Log.i("list", result);
-                    response [x-1] = result;
+                    response[x - 1] = result;
+
+                }Log.i("list", response[0]);
+                    Log.i("list", response[1]);
+                    Log.i("list", response[2]);
+
+
+
 
 
 
@@ -182,25 +198,35 @@ public class saved_users extends AppCompatActivity {
     }
     public void addList(View view){
         //String[] options = new String[]{size};
+       // Log.i("list", response[0]);
 
-        the_list = new ArrayList<String>(Arrays.asList(response));
+
+        if(flag){
+            Toast.makeText(getApplicationContext(), "not saved", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(getApplicationContext(),response[0] , Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),response[1] , Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),response[2] , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),response[3] , Toast.LENGTH_LONG).show();
+            the_list = new ArrayList<String>(Arrays.asList(response));
+            Toast.makeText(getApplicationContext(),response[0] +the_list.get(0) , Toast.LENGTH_LONG).show();
+            ;
+
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,the_list);
+            my_list.setAdapter(adapter);
+
+
 
         //load list from database
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, the_list);
-        my_list.setAdapter(adapter);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        my_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Toast.makeText(getApplicationContext(),"choose from the list" , Toast.LENGTH_LONG).show();
-            //the_list.get(i)
-        }
-    });
+
+       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
         //the_list.add("I'm adding from JAVA");
         my_list.setAdapter(adapter);
         dropdown.setAdapter(adapter);
 
-    }
+    }}
 
     public void creat_form_to_book(View view){
         text_list = dropdown.getSelectedItem().toString();

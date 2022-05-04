@@ -14,7 +14,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
 
     $response = [];
    // $response['handy ']="";
-    $count = 0;
+    $count = 1;
 
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
     $query = mysqli_query($mysqli , "SELECT id ,handy_person , user_list from saved where user_list='$id_current_user'   ");
@@ -25,24 +25,31 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
     if($exist > 0 ){
         $table_id = $row['user_list'];
        // echo $table_id;
+       $response['handy_person'.$count] = $row['handy_person'];
+       
         while($row = mysqli_fetch_assoc($query)  ){
+            $response ['empty'] = "not";
             
             
             
             $table_id = $row['user_list'];
-            if($table_id == $id_current_user){
+            
                 $count++;
             $table_handy_person = $row['handy_person']?? null;
-            //echo $table_handy_person;
+           // echo $table_handy_person;
              $response['handy_person'.$count] = $table_handy_person;
              
         //
             
             
 
-        }//echo $count;
+        //echo $count;
        
     }
-}$json_response = json_encode($response);
+    
+}else {
+        $response ['empty'] = "empty";
+    }
+    $json_response = json_encode($response);
     echo $json_response;
 ?>

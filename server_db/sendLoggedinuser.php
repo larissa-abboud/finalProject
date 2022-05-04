@@ -15,17 +15,11 @@ function login( $username){
     {$query = $mysqli->prepare("INSERT INTO currently_loged_in (username) VALUES (?);");
     $query->bind_param("s", $username);
     $query->execute();
-        $response['error'] = false;
-        $response['message'] = "currently logged in user is ".$username;
-        }else {
-            
-        $response['error'] = true;
-        $response['message'] = "some err occurred";
+        
         }
 
 
 
-    $json_response = json_encode($response);
-    echo $json_response;
+    
 }
 ?>

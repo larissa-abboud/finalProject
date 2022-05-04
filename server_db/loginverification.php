@@ -31,9 +31,9 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
         while($row = mysqli_fetch_assoc($query) and $flag){
             $table_username = $row['username'];
             $table_pass = $row['pass'];
-            echo $username;
-            echo $table_username;
-            echo "    ";
+            //echo $username;
+            //echo $table_username;
+           // echo "    ";
 
             if ($username == $table_username && $password== $table_pass){
                 login($username);
@@ -50,24 +50,22 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
                  *              not registered} */
                  if($username != $table_username){
                     
-                    $response['error'] = true;
+                   // $response['error'] = true;
                     $response['message'] = "incorrect username"; 
                     
                  }
                  else if($password != $table_pass){
-                    $response['error'] = true;
+                    //$response['error'] = true;
                     $response['message'] = "incorrect password";
 
                  }
                  else{
-                    $response['error'] = true;
+                   // $response['error'] = true;
                     $response['message'] = "please sign up ";
                  }
             }
     }
-}}else{
-
-    echo "error";}
+}}
     $json_response = json_encode($response);
 echo $json_response;
 ?>

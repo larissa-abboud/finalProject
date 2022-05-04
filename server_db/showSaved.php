@@ -34,7 +34,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
                 $count++;
             $table_handy_person = $row['handy_person']?? null;
             //echo $table_handy_person;
-             $response[] = $table_handy_person;
+             $response['handy_person'.$count] = $table_handy_person;
              
         //
             

@@ -18,7 +18,7 @@
             android:name=".handyperson"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".displayUser"
             android:exported="false" />
         <activity
             android:name=".saved_users"
@@ -30,7 +30,7 @@
             android:name=".thanksBooking"
             android:exported="false" />
         <activity
-            android:name=".mainHome"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".creatForm"
@@ -42,7 +42,7 @@
             android:name=".Signup"
             android:exported="false" />
         <activity
-            android:name=".displayUser"
+            android:name=".mainHome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

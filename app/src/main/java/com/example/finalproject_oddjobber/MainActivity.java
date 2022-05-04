@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
@@ -24,38 +26,12 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
     EditText username,password ;
     Button login;
+    String todo;
+    String response;
     boolean flag = false ; // will indicate the result of the api
-    String url = "http://192.168.1.104/finalProject/server_db/testapi.php";
+    String url = "http://192.168.1.104/finalProject/server_db/loginverification.php";
     //post
-    protected static class DownloadInfo extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
 
-            try {
-                URL url = new URL(params[0]);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                connection.setRequestProperty("Accept", "*/*");
-
-                connection.setDoOutput(true);
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-                writer.write(params[1]);
-                writer.close();
-
-                connection.connect();
-
-                // Response: 400
-                Log.e("Response", connection.getResponseMessage() + "");
-
-            } catch (Exception e) {
-                Log.e(e.toString(), "Something with request");
-            }
-
-            return null;
-        }
-    }
     //get
     public  class DownloadTask extends AsyncTask<String, Void, String> {
 
@@ -77,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     char current = (char) data;
                     result = result + current;
                     data = reader.read();
+                    //Log.i("msg", result);
 
 
                 }
@@ -95,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
             try{
                 JSONObject json = new JSONObject(s);
-                String created_at = json.getString("created_at");
-                String response= json.getString("error");
-                String todo= json.getString("message");
-                Log.i("Created At", created_at);
-                Log.i("Joke", response);
+
+                response = json.getString("error");
+                todo = json.getString("message");
+                Log.i("status", response);
+                Log.i("msg", todo);
 
 
             }catch(Exception e){
@@ -117,22 +94,22 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwords);
         login = (Button) findViewById(R.id.log_in);
         //String amount =  ""; //get the amount from the view
-
-
-        DownloadTask task = new DownloadTask();
-        task.execute(url);
-
-    }
-    public void clickHelloWorld (View view) {
-
-        DownloadInfo downloadInfoOfWeather = new DownloadInfo();
+        //update values
+        //post,send values to api using the url
+        //format:
+        //?attribute=value&
 
 
 
 
-        downloadInfoOfWeather.execute(url, "q=select wind from weather.forecast where woeid=2460286&format=json");
+
+
 
     }
+
+
+
+
     public void display(View view){
         Intent intent = new Intent(getApplicationContext(), displayUser.class);
         startActivity(intent);
@@ -142,19 +119,36 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void LogIn(View v){
+        String llink = "http://192.168.1.104/finalProject/server_db/loginverification.php"+"?username="+username.getText().toString()+"&"+"pass="+password.getText().toString();
+        //String link = "http://192.168.1.104/finalProject/server_db/loginverification.php?username=admin4&pass=admin4";
+        //Toast.makeText(getApplicationContext(),link , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),llink , Toast.LENGTH_LONG).show();
         DownloadTask task = new DownloadTask();
-        task.execute(url);
+        task.execute(llink);
+
+
 
         // api reads from edit text
-        if(flag){
-            username.setText("");
-            password.setText("");
-            signup(v);
+        if(response == "false"){
+            //username.setText("");
+           // password.setText("");
+            display(v);
 
         }else {
             username.setText("");
             password.setText("");
-            display(v); //display user
+            if(todo =="incorrect username"){
+                Toast.makeText(getApplicationContext(),"incorrect username" , Toast.LENGTH_LONG).show();
+            }else if(todo == "incorrect password"){
+                Toast.makeText(getApplicationContext(),"incorrect password" , Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(getApplicationContext(),"Register to log in" , Toast.LENGTH_LONG).show();
+                signup(v);
+            }
+
+             //op = wrong pass
+            //op = wring username
+            //op = doesn't exist
         }
         /**obtain from as : username  password
          * using api , check if user reg

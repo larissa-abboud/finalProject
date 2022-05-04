@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -34,10 +33,11 @@ public class saved_users extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Spinner dropdown;
     String text_list;
-    String[] options;
+    String options;
     String url = "http://192.168.1.104/finalProject/server_db/showSaved.php";
     String result;
-    String response[];
+    String[] response;
+    int size;
     public  class DownloadTask extends AsyncTask<String, Void, String> {
         //run in parallel with the app
         protected String doInBackground(String... urls){
@@ -85,16 +85,30 @@ public class saved_users extends AppCompatActivity {
             super.onPostExecute(s);
 
             try{
+                int x=0;
                 //parse data
-                JSONArray json = new JSONArray(s);
-                for(int i=0; i < json.length(); i++) {
-                    JSONObject jsonobject = json.getJSONObject(i);
-                    //String id       = jsonobject.getString("id");
-                    String handy_person    = jsonobject.getString("handy_person");
-                   // Log.i("list", id);
-                    Log.i("list", handy_person);
+
+                JSONObject json = new JSONObject(s);
+                size = json.length();
+                response = new String[size];
+                while( x < json.length()){
+                    //fix
+
+                    x++;String result = json.getString("handy_person"+x);
+                    Log.i("list", result);
+                    response [x-1] = result;
+
+
+
 
                 }
+
+
+                //response= json.getString("user");
+               // Log.i("current user", response);
+                    //Log.i("list", jsonobject.getString("handy_person"));
+
+
 
 
 
@@ -111,6 +125,7 @@ public class saved_users extends AppCompatActivity {
             }catch(Exception e){
                 e.printStackTrace();
             }
+
         }
 
     }
@@ -123,17 +138,37 @@ public class saved_users extends AppCompatActivity {
         create_app = (Button) findViewById(R.id.bookUser);
         my_list = (ListView) findViewById(R.id.myList);
         dropdown =  findViewById(R.id.users);
+
+
+
+
+         //options =""+ size;
+
+        //the_list = new ArrayList(size);
+        ///Log.i("x",options );
+       //the_list = new ArrayList<String>(size);
+        //int i = 0;
+        //while (i!= size-1){
         DownloadTask task = new DownloadTask();
         task.execute(url);
+          // the_list.add(response[i]);
+          //  i++;
 
-        /*the_list = new ArrayList<String>();
+
+       // }
+
+
+
+        /*;
         the_list.add("Mobile Computing");
         the_list.add("Database Management Systems");
         the_list.add("Software Engineering");*/
         //("Mobile Computing", "Database Management Systems", "Software Engineering")
-         options = new String[]{"HANDYPERSON1","HANDYPERSON2"};
+         //options = new String[]{};
 
-        the_list = new ArrayList<String>(Arrays.asList(options)); //will store
+
+
+
         /*
         * name,username , bio*/
         //ArrayAdapter <String> languages = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, options);
@@ -146,6 +181,10 @@ public class saved_users extends AppCompatActivity {
 
     }
     public void addList(View view){
+        //String[] options = new String[]{size};
+
+        the_list = new ArrayList<String>(Arrays.asList(response));
+
         //load list from database
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, the_list);
         my_list.setAdapter(adapter);
@@ -175,7 +214,7 @@ public class saved_users extends AppCompatActivity {
         startActivity(obj);
 
     }
-    public void load_saved_users(View view){
+
         //
 
 
@@ -186,4 +225,3 @@ public class saved_users extends AppCompatActivity {
 
     }
 
-}

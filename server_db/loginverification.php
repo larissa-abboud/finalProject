@@ -46,20 +46,20 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
                  *              wrong password
                  *              or wrong username
                  *              not registered} */
-                 if($username != $table_username and $password != $table_pass ){
+                 if($username != $table_username || $password != $table_pass ){
                     
                     $response['error'] = true;
-                    $response['message'] = "please sign up"; 
+                    $response['message'] = "incorrect password or username"; 
                     
                  }
                  else{
                     $response['error'] = true;
-                    $response['message'] = "incorrect password or username ";
+                    $response['message'] = "please sign up";
                  }
             }
     }
 }}else{$response['error'] = true;
-    $response['message'] = "missing values ";}
+    $response['message'] = "missing values";}
     $json_response = json_encode($response);
 echo $json_response;
 ?>

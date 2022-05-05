@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 cont.setAlpha(0);
                 username.setText("");
                 password.setText("");
+                Log.i("msg ", todo);
+
                 if(todo.equalsIgnoreCase("incorrect password or username")){
                     Toast.makeText(getApplicationContext(),"incorrect username or password" , Toast.LENGTH_LONG).show();
 

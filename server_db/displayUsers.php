@@ -9,7 +9,7 @@ include("getUserOfList.php");
     //connect to server;
     
     $query = mysqli_query($mysqli , " SELECT username from user");
-    $exist = mysqli_num_rows($query);
+    
     $row = mysqli_fetch_assoc($query);
     $response = [];
     $table_username ="";

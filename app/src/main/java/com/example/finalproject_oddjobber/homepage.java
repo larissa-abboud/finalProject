@@ -16,7 +16,7 @@ public class homepage extends AppCompatActivity {
         logout = (Button) findViewById(R.id.goLogin);
     }
     public void Login(View view){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), mainHome.class);
         startActivity(intent);
     }
     public void savedUsers(View v){

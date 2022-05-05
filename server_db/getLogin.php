@@ -1,5 +1,5 @@
 <?php
-
+//get api,returns username to display
 include("getUserOfList.php");
 include("db_connect.php");
 $response = [];

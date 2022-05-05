@@ -21,8 +21,9 @@ include("getUserOfList.php");
         $table_username = $row['username'];
         $bio = getBio($table_username);
         
-
-        $response[$count] = $table_username ." : ".$bio ;
+        $response['user'.$count] = $table_username;
+        $response[$count] = " : ".$bio ;
+        
         $count++;
 
     }

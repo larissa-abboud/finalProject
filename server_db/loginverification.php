@@ -31,14 +31,12 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
         while($row = mysqli_fetch_assoc($query) and $flag){
             $table_username = $row['username'];
             $table_pass = $row['pass'];
-            //echo $username;
-            //echo $table_username;
-           // echo "    ";
+            
 
             if ($username == $table_username and $password== $table_pass){
                 login($username);
                 $response['error'] = false;
-                $response['message'] = "currently logged in user is ".$username;
+                $response['message'] = "currently logged in user is : ".$username;
                 $flag = false;
                 
 

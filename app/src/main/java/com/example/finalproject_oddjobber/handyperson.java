@@ -105,14 +105,16 @@ public class handyperson extends AppCompatActivity {
                     //flag = true;
 
                     size = json.length();
-                    response = new String[size-1];// -1 to not get null pointer in list view
-                    while( x < json.length()-1) {
+                    response = new String[(size)/2];// -1 to not get null pointer in list view
+                    while( x < (json.length())/2) {
                         //fix
 
                         x++;
-                        String result = json.getString("" + x);
+                        String result = json.getString("user" + x);
                         Log.i("list", result);
-                        response[x - 1] = result;
+                        response[x -1] = result;
+                        Log.i("res", response[x-1]);
+
 
 
 

@@ -9,22 +9,20 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
     //connect to server;
     $current_user = getCurrentUser();
     $id_current_user = ObtainIdOfUser($current_user);
-    //echo $current_user .$id_current_user;
-
-
+    
     $response = [];
-   // $response['handy ']="";
+   
     $count = 1;
 
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
     $query = mysqli_query($mysqli , "SELECT id ,handy_person , user_list from saved where user_list='$id_current_user'   ");
     $exist = mysqli_num_rows($query);
     $row = mysqli_fetch_assoc($query);
-    //$table_handy_person = "";
+    
     $table_id = "0";
     if($exist > 0 ){
         $table_id = $row['user_list'];
-       // echo $table_id;
+       
        $response ['empty'] = "not";
        $response['handy_person'.$count] = $row['handy_person'];
        $response[$count] = " : ".getBio( $row['handy_person']) ;
@@ -42,7 +40,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
            $response[$count] = " : ".getBio($table_handy_person) ?? "none";
              $response['handy_person'.$count] = $table_handy_person ;
              
-        //
+        
             
             
 

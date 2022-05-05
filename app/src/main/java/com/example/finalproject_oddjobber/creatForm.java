@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ public class creatForm extends AppCompatActivity {
     String result ,todo;
     String url = "http://192.168.1.104/finalProject/server_db/BookApp.php";
     String name ,chosen;
+    ImageView m ;
     //String responses;
     public  class DownloadTask extends AsyncTask<String, Void, String> {
         //run in parallel with the app
@@ -103,10 +105,12 @@ public class creatForm extends AppCompatActivity {
         context = (EditText) findViewById(R.id.details);
         send = (Button) findViewById(R.id.gohomepage);
         next = (Button) findViewById(R.id.gocheck);
+        m = (ImageView) findViewById(R.id.muki) ;
+
         Intent x = getIntent();
          name = x.getStringExtra("username");
         //Toast.makeText(getApplicationContext(), " " , Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), name + " is the handyperson" , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),  " Booking Appointment with" + name , Toast.LENGTH_LONG).show();
         next.setAlpha(0);
     }
     public void status(View view){
@@ -114,6 +118,8 @@ public class creatForm extends AppCompatActivity {
         startActivity(intent);
     }
     public void sendForm(View v){
+        m.setX(-1000);
+        m.animate().translationXBy(1000).rotation(3600).setDuration(2000);
         //String test = "http://192.168.1.104/finalProject/server_db/BookApp.php?time_needed=5&details=help plants&for_user=admintest2";
 
         String link = url + "?time_needed="+time_app.getText().toString()+ "&"+ "details="+context.getText().toString()+"&"+"for_user="+name;
@@ -132,13 +138,7 @@ public class creatForm extends AppCompatActivity {
          * username obtained from saved user intent
          * goes to status
          * */
-        //Log.i("status", responses);
-        /*if(chosen.equalsIgnoreCase("false")){
-        //status(v);}
-            Toast.makeText(getApplicationContext(),todo  , Toast.LENGTH_LONG).show();}
-        else{
-            Toast.makeText(getApplicationContext(),todo  , Toast.LENGTH_LONG).show();
-        }*/
+
     }
     public void check(View v){
         Log.i("status", chosen);

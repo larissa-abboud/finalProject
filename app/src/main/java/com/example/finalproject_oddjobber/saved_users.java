@@ -179,21 +179,7 @@ public class saved_users extends AppCompatActivity {
 
 
 
-        /*;
-        the_list.add("Mobile Computing");
-        the_list.add("Database Management Systems");
-        the_list.add("Software Engineering");*/
-        //("Mobile Computing", "Database Management Systems", "Software Engineering")
-         //options = new String[]{};
 
-
-
-
-        /*
-        * name,username , bio*/
-        //ArrayAdapter <String> languages = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, options);
-        //languages.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //dropdown.setAdapter(languages);
 
 
 
@@ -206,7 +192,7 @@ public class saved_users extends AppCompatActivity {
 
 
         if(flag){
-            Toast.makeText(getApplicationContext(), "not saved", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "no users saved", Toast.LENGTH_LONG).show();
         }else{
 
             //Toast.makeText(getApplicationContext(),response[3] , Toast.LENGTH_LONG).show();

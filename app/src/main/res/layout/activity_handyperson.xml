@@ -65,6 +65,7 @@
         android:onClick="save"
         android:text="save handyperson"
         app:icon="@android:drawable/btn_star_big_on"
+        android:textSize="10sp"
 
         app:iconTint="#AEB3D5"
         app:layout_constraintBottom_toBottomOf="parent"

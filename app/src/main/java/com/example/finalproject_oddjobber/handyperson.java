@@ -62,7 +62,7 @@ public class handyperson extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read(); //move cursor one more character
-                    //not optimal
+
                     //get all input into string
                     //Log.i("result",result);
 
@@ -170,7 +170,7 @@ public class handyperson extends AppCompatActivity {
         my_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"choose from the list" , Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"choose from the dropdown" , Toast.LENGTH_LONG).show();
                 //the_list.get(i)
             }
         });
@@ -183,7 +183,7 @@ public class handyperson extends AppCompatActivity {
         text_list = dropdown.getSelectedItem().toString();
         Toast.makeText(getApplicationContext(), text_list, Toast.LENGTH_LONG).show();
         DownloadTask task2 = new DownloadTask();
-        Toast.makeText(getApplicationContext(),url_post +"?handy_person="+ text_list , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),url_post +"?handy_person="+ text_list , Toast.LENGTH_LONG).show();
         flag = true;
         task2.execute(url_post +"?handy_person=" + text_list);
 

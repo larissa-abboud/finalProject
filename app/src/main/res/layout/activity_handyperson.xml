@@ -7,18 +7,6 @@
     tools:context=".handyperson">
 
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="897dp"
-        android:layout_height="1160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748"
-        app:srcCompat="@drawable/backgr" />
-
     <Button
         android:id="@+id/showusers"
         android:layout_width="278dp"
@@ -39,7 +27,6 @@
         android:id="@+id/imageButton4"
         android:layout_width="162dp"
         android:layout_height="70dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -60,12 +47,17 @@
         app:layout_constraintVertical_bias="0.315">
 
 
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="897dp"
+            android:layout_height="1160dp"
+            app:srcCompat="@drawable/backgr" />
     </ListView>
 
 
     <Button
         android:id="@+id/saveuser"
-        android:layout_width="130dp"
+        android:layout_width="141dp"
         android:layout_height="73dp"
         android:backgroundTint="#071142"
         android:fontFamily="sans-serif-black"
@@ -80,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="0.843" />
 
     <TextView
         android:id="@+id/user"
@@ -99,16 +91,16 @@
 
     <Spinner
         android:id="@+id/users_saved"
-        android:layout_width="128dp"
-        android:layout_height="38dp"
+        android:layout_width="158dp"
+        android:layout_height="67dp"
         android:dropDownSelector="@android:drawable/btn_dropdown"
         android:tag="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.814" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

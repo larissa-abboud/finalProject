@@ -52,13 +52,13 @@ public class saved_users extends AppCompatActivity {
             HttpURLConnection http;
 
             try{
-                url = new URL(urls[0]);//getlogin.php
+                url = new URL(urls[0]);
                 http = (HttpURLConnection) url.openConnection(); //establishes the connection
-                // http.setDoOutput(true);
 
 
-                InputStream in = http.getInputStream();//problem??
-                //Log.i("result",in.toString());
+
+                InputStream in = http.getInputStream();
+
                 InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read(); //cursor reads output api
 
@@ -66,9 +66,7 @@ public class saved_users extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read(); //move cursor one more character
-                    //not optimal
-                    //get all input into string
-                    //Log.i("result",result);
+
 
 
                 }
@@ -83,7 +81,7 @@ public class saved_users extends AppCompatActivity {
 
 
         protected void onPostExecute(String s){
-            //  Log.i("result",s);
+
             //api is executing
             super.onPostExecute(s);
 
@@ -100,13 +98,13 @@ public class saved_users extends AppCompatActivity {
                     //flag = true;
                     Log.i("list", check);
                 size = json.length();
-                    options = new String[(size-1)/2];
-                response = new String[(size-1)/2];// -1 to not get null pointer in list view
+                    options = new String[(size-1)/2]; // options will diplay in list
+                response = new String[(size-1)/2];// -1 to not get null pointer in dropdown
                 while( x < (json.length()-1)/2) {
-                    //fix
+
 
                     x++;
-                    Log.i("list", ""+size);
+                   //Log.i("list", ""+size);
                     String result = json.getString("handy_person" + x);
                     String result_bio = json.getString("" + x);
                     Log.i("list", result + result_bio);
@@ -124,22 +122,6 @@ public class saved_users extends AppCompatActivity {
                 }
 
 
-                //response= json.getString("user");
-               // Log.i("current user", response);
-                    //Log.i("list", jsonobject.getString("handy_person"));
-
-
-
-
-
-                //response = json.getString("handy_person");
-
-                //options = response;
-                //display.setText(response);
-                //update values
-                //post,send values to api using the url
-                //format:
-                //?attribute=value&
 
 
             }catch(Exception e){
@@ -162,33 +144,16 @@ public class saved_users extends AppCompatActivity {
 
 
 
-         //options =""+ size;
 
-        //the_list = new ArrayList(size);
-        ///Log.i("x",options );
-       //the_list = new ArrayList<String>(size);
-        //int i = 0;
-        //while (i!= size-1){
         DownloadTask task = new DownloadTask();
         task.execute(url);
-          // the_list.add(response[i]);
-          //  i++;
-
-
-       // }
-
-
-
-
-
 
 
 
 
     }
     public void addList(View view){
-        //String[] options = new String[]{size};
-       // Log.i("list", response[0]);
+
 
 
         if(flag){
@@ -196,10 +161,9 @@ public class saved_users extends AppCompatActivity {
 
         }else{
 
-            //Toast.makeText(getApplicationContext(),response[3] , Toast.LENGTH_LONG).show();
+
             the_list = new ArrayList<String>(Arrays.asList(options));
-            //Toast.makeText(getApplicationContext(),response[0] +the_list.get(0) , Toast.LENGTH_LONG).show();
-            ;
+
 
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,the_list);
             my_list.setAdapter(adapter);
@@ -213,7 +177,7 @@ public class saved_users extends AppCompatActivity {
        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        //the_list.add("I'm adding from JAVA");
+
         my_list.setAdapter(adapter);
         dropdown.setAdapter(adapter2);
 
@@ -232,13 +196,13 @@ public class saved_users extends AppCompatActivity {
 
     }
 
-        //
+
 
 
         /*get saved from get api, lists onto screen and stores usernames in spinner*/
         //create list
         //create spinner
-        //cond =  cannot book an appointment twice for the same user , in php(check if added is already in list)
+        //cond =  cannot book an appointment twice for the same user with same time , in php(check if added is already in list)
         public void back(View v){
             Intent intent = new Intent(getApplicationContext(), homepage.class);
             startActivity(intent);

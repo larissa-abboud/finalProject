@@ -48,13 +48,13 @@ public class handyperson extends AppCompatActivity {
             HttpURLConnection http;
 
             try{
-                url = new URL(urls[0]);//getlogin.php
+                url = new URL(urls[0]);
                 http = (HttpURLConnection) url.openConnection(); //establishes the connection
                 // http.setDoOutput(true);
 
 
-                InputStream in = http.getInputStream();//problem??
-                //Log.i("result",in.toString());
+                InputStream in = http.getInputStream();
+
                 InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read(); //cursor reads output api
 
@@ -63,8 +63,7 @@ public class handyperson extends AppCompatActivity {
                     result += current;
                     data = reader.read(); //move cursor one more character
 
-                    //get all input into string
-                    //Log.i("result",result);
+
 
 
                 }
@@ -79,8 +78,7 @@ public class handyperson extends AppCompatActivity {
 
 
         protected void onPostExecute(String s){
-            //  Log.i("result",s);
-            //api is executing
+
             super.onPostExecute(s);
 
             try{
@@ -89,35 +87,34 @@ public class handyperson extends AppCompatActivity {
 
                     String responses = json2.getString("error");
                     todo = json2.getString("message");
-                    Log.i("status", responses);
+                    Log.i("error ", responses);
                     Log.i("msg", todo);
                     //chosen = responses;
 
                 }
                 else{
                 int x=0;
-                //parse data
+
 
                 JSONObject json = new JSONObject(s);
 
 
 
-                    //flag = true;
 
                     size = json.length();
                     options = new String[(size)/2];
                     response = new String[(size)/2];// -1 to not get null pointer in list view
                     while( x < (json.length())/2) {
-                        //fix
+
 
                         x++;
                         String result = json.getString("user" + x);
                         String result_bio = json.getString("" + x);
-                        Log.i("list", result + result_bio);
+                        //Log.i("list", result + result_bio);
                         options[x-1] = result+result_bio;
-                        Log.i("list", result);
+                        Log.i(" user in list :", result);
                         response[x -1] = result;
-                        Log.i("res", response[x-1]);
+                        //Log.i("res", response[x-1]);
 
 
 
@@ -154,12 +151,10 @@ public class handyperson extends AppCompatActivity {
         DownloadTask task = new DownloadTask();
         task.execute(url);
 
-        //String[] options = new String[]{"HANDYPERSON1","HANDYPERSON2"};
 
-        //the_list = new ArrayList<String>(Arrays.asList("HANDYPERSON1","HANDYPERSON2"));
     }
     /*
-    * show handyperson , get api , lsit users and adds to spinner array list
+    * show user , get api , list users and adds to spinner array list
     * spinner of user
     * save user (chosen_user) post api,goes to homepage*/
     public void home(View view){
@@ -168,9 +163,9 @@ public class handyperson extends AppCompatActivity {
     }
 
     public void show_handyperson_list(View v){
+        //list all user from get api
         the_list = new ArrayList<String>(Arrays.asList(options));
-        //Toast.makeText(getApplicationContext(),response[0] +the_list.get(0) , Toast.LENGTH_LONG).show();
-        ;
+
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,the_list);
         my_list.setAdapter(adapter);
@@ -184,16 +179,16 @@ public class handyperson extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        //the_list.add("I'm adding from JAVA");
+
         my_list.setAdapter(adapter);
         dropdown.setAdapter(adapter2);
-        //get api,list
+
     }
     public void save(View v){
         text_list = dropdown.getSelectedItem().toString();
         Toast.makeText(getApplicationContext(), text_list, Toast.LENGTH_LONG).show();
         DownloadTask task2 = new DownloadTask();
-        //Toast.makeText(getApplicationContext(),url_post +"?handy_person="+ text_list , Toast.LENGTH_LONG).show();
+
         flag = true;
         task2.execute(url_post +"?handy_person=" + text_list);
 

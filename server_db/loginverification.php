@@ -58,7 +58,8 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
                  }
             }
     }
-}}
+}}else{$response['error'] = true;
+    $response['message'] = "missing values ";}
     $json_response = json_encode($response);
 echo $json_response;
 ?>

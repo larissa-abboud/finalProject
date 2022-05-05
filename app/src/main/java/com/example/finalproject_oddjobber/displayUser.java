@@ -38,13 +38,13 @@ public class displayUser extends AppCompatActivity {
             HttpURLConnection http;
 
             try{
-                url = new URL(urls[0]);//getlogin.php
+                url = new URL(urls[0]);
                 http = (HttpURLConnection) url.openConnection(); //establishes the connection
                // http.setDoOutput(true);
 
 
-                InputStream in = http.getInputStream();//problem??
-                 //Log.i("result",in.toString());
+                InputStream in = http.getInputStream();
+
                 InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read(); //cursor reads output api
 
@@ -52,9 +52,7 @@ public class displayUser extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read(); //move cursor one more character
-                    //not optimal
-                    //get all input into string
-                    //Log.i("result",result);
+
 
 
                 }
@@ -69,7 +67,7 @@ public class displayUser extends AppCompatActivity {
 
 
         protected void onPostExecute(String s){
-           //  Log.i("result",s);
+
             //api is executing
             super.onPostExecute(s);
 
@@ -79,7 +77,7 @@ public class displayUser extends AppCompatActivity {
                 JSONObject json = new JSONObject(s);
 
                 response= json.getString("user");
-                Log.i("current user", response);
+                Log.i("Current user : ", response);
                 display.setText(response);
                 //update values
                 //post,send values to api using the url
@@ -115,8 +113,6 @@ public class displayUser extends AppCompatActivity {
     public void displaytheuser(){
         display.setText("user");
         display.setText(response);
-        //Log.i("current user", response);
-
 
 
         //obtain user from api

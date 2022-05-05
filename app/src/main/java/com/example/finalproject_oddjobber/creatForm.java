@@ -38,7 +38,7 @@ public class creatForm extends AppCompatActivity {
             HttpURLConnection http;
 
             try{
-                url = new URL(urls[0]);//getlogin.php
+                url = new URL(urls[0]);
                 http = (HttpURLConnection) url.openConnection(); //establishes the connection
                 // http.setDoOutput(true);
 
@@ -52,9 +52,7 @@ public class creatForm extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read(); //move cursor one more character
-                    //not optimal
-                    //get all input into string
-                    //Log.i("result",result);
+
 
 
                 }
@@ -81,7 +79,7 @@ public class creatForm extends AppCompatActivity {
 
                     String responses = json2.getString("error");
                     todo = json2.getString("message");
-                    Log.i("status", responses);
+                    Log.i("error", responses);
                     Log.i("msg", todo);
                     chosen = responses;
 
@@ -108,8 +106,7 @@ public class creatForm extends AppCompatActivity {
         m = (ImageView) findViewById(R.id.muki) ;
 
         Intent x = getIntent();
-         name = x.getStringExtra("username");
-        //Toast.makeText(getApplicationContext(), " " , Toast.LENGTH_LONG).show();
+        name = x.getStringExtra("username");
         Toast.makeText(getApplicationContext(),  " Booking Appointment with" + name , Toast.LENGTH_LONG).show();
         next.setAlpha(0);
     }
@@ -120,7 +117,7 @@ public class creatForm extends AppCompatActivity {
     public void sendForm(View v){
         m.setX(-1000);
         m.animate().translationXBy(1000).rotation(3600).setDuration(2000);
-        //String test = "http://192.168.1.104/finalProject/server_db/BookApp.php?time_needed=5&details=help plants&for_user=admintest2";
+
 
         String link = url + "?time_needed="+time_app.getText().toString()+ "&"+ "details="+context.getText().toString()+"&"+"for_user="+name;
         DownloadTask task = new DownloadTask();
@@ -134,7 +131,7 @@ public class creatForm extends AppCompatActivity {
 
 
         /**
-         * post api :context , time_app
+         * post api :context , time_app ,for user
          * username obtained from saved user intent
          * goes to status
          * */

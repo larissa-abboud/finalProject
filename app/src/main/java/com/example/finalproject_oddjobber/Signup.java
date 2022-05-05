@@ -74,7 +74,7 @@ public class Signup extends AppCompatActivity {
             }catch(Exception e){
                 e.printStackTrace();
             }
-            //Log.i("response", response);
+
         }
 
     }
@@ -102,14 +102,13 @@ public class Signup extends AppCompatActivity {
         obj.putExtra("todo", todo);
         obj.putExtra("response", response);
         startActivity(obj);
-       // Intent intent = new Intent(getApplicationContext(), thanksBooking.class);
-        //startActivity(intent);
+
     }
     public void signup(View v){
         String llink = "http://10.31.200.210/finalProject/server_db/regUser.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString()+ "&" + "full_name=" + name.getText().toString()+ "&" + "bio=" + bio.getText().toString();
 
         task.execute(llink);
-        //signuphelp(v);
+
         n.setAlpha(1);
 
 

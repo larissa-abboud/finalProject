@@ -76,15 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
                 String responses = json.getString("error");
                 todo = json.getString("message");
-                Log.i("status", responses);
-                Log.i("msg", todo);
+                Log.i("error ", responses);
+                Log.i("msg ", todo);
                 response = responses;
 
 
             }catch(Exception e){
                 e.printStackTrace();
             }
-            //Log.i("response", response);
+
         }
 
     }
@@ -97,25 +97,10 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwords);
         login = (Button) findViewById(R.id.log_in);
         cont = (Button) findViewById(R.id.button);
-        //String amount =  ""; //get the amount from the view
-        //update values
-        //post,send values to api using the url
-        //format:
-        //?attribute=value&
-        //String link = "http://192.168.1.104/finalProject/server_db/loginverification.php?username=admin&pass=admin2";
-        //Toast.makeText(getApplicationContext(),link , Toast.LENGTH_LONG).show();
-        //Toast.makeText(getApplicationContext(),llink , Toast.LENGTH_LONG).show();
+
         task = new DownloadTask();
-        //task.execute(llink);
+
         cont.setAlpha(0);
-
-
-
-
-
-
-
-
 
 
 
@@ -133,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void LogIn(View v) {
+        //link of post api
         String llink = "http://10.31.200.210/finalProject/server_db/loginverification.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString();
 
         task.execute(llink);
@@ -140,46 +126,47 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-        //Log.i("response", response);
-        //Log.i("response", response);
 
 
 
-public void contt(View v){
 
-        // api reads from edit text
-       // Toast.makeText(getApplicationContext(),response , Toast.LENGTH_LONG).show();
-        if(response.equalsIgnoreCase("false")){
-            username.setText("");
-            password.setText("");
-            display(v);
-            cont.setAlpha(0);
+    public void contt(View v){
 
-        }else {
-            cont.setAlpha(0);
-            username.setText("");
-            password.setText("");
-            if(todo.equalsIgnoreCase("incorrect password or username")){
-                Toast.makeText(getApplicationContext(),"incorrect username or password" , Toast.LENGTH_LONG).show();
+            // api reads from edit text
 
-            }else{
-                Toast.makeText(getApplicationContext(),"Register to log in" , Toast.LENGTH_LONG).show();
-                signup(v);
-                //
+            if(response.equalsIgnoreCase("false")){
+                username.setText("");
+                password.setText("");
+                display(v);
+                cont.setAlpha(0);
 
+            }else {
+                cont.setAlpha(0);
+                username.setText("");
+                password.setText("");
+                if(todo.equalsIgnoreCase("incorrect password or username")){
+                    Toast.makeText(getApplicationContext(),"incorrect username or password" , Toast.LENGTH_LONG).show();
+
+                }else if (todo.equalsIgnoreCase("missing values")) {
+                    Toast.makeText(getApplicationContext(),"missing values" , Toast.LENGTH_LONG).show();
+                } else{
+                    Toast.makeText(getApplicationContext(),"Register to log in" , Toast.LENGTH_LONG).show();
+                    signup(v);
+
+
+                }
+
+                 //op = wrong pass
+                //op = wring username
+                //op = doesn't exist
             }
-
-             //op = wrong pass
-            //op = wring username
-            //op = doesn't exist
-        }
-        /**obtain from as : username  password
-         * using api , check if user reg
-         * yes = go to home page
-         * no  = go to sign up with taost or stay with taost */
+            /**obtain from as : username  password
+             * using api , check if user reg
+             * yes = go to home page
+             * no  = go to sign up with taost or stay with taost if feilds incorrect */
 
 
 
 
-    }}
+        }}
 

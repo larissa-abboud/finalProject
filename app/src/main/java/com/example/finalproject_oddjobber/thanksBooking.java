@@ -28,8 +28,7 @@ public class thanksBooking extends AppCompatActivity {
         todoo = x.getStringExtra("todo");
         responseo = x.getStringExtra("response");
         Toast.makeText(getApplicationContext(), nameo, Toast.LENGTH_LONG).show();
-        //Toast.makeText(getApplicationContext(), responseo , Toast.LENGTH_LONG).show();
-        //Toast.makeText(getApplicationContext(), todoo , Toast.LENGTH_LONG).show();
+
         result.setText(todoo);
 
 

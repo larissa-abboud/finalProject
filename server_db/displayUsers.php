@@ -4,6 +4,7 @@
 
 session_start();
 $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
+include("getUserOfList.php");
    
     //connect to server;
     
@@ -12,13 +13,16 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
     $row = mysqli_fetch_assoc($query);
     $response = [];
     $table_username ="";
-    $count = 0;
+    $count = 1;
+    
+
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
     while ( $row = mysqli_fetch_assoc($query)){
         $table_username = $row['username'];
+        $bio = getBio($table_username);
         
 
-        $response[$count] = $table_username;
+        $response[$count] = $table_username ." : ".$bio ;
         $count++;
 
     }

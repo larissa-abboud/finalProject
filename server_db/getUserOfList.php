@@ -30,7 +30,7 @@ function ObtainIdOfUser($user_obtained){
  
 
  }
- function checkUserIn($table , $user){
+ function checkUserIn($table , $user ,$id){
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
     
@@ -41,15 +41,19 @@ function ObtainIdOfUser($user_obtained){
     $table_handy = "";
     $table_id = "";
     if($exist > 0 ){
-        while($row = mysqli_fetch_assoc($query)){
+        while($row = mysqli_fetch_assoc($query) ){
             $table_handy = $row['handy_person'];
-            $table_id = $row['id'];
+            $table_id = $row['user_list'];
 
         }
         if($table_handy == ""){
             return $table_handy;
         }else{
-            return "already saved";
+            if($table_id == $id){
+            return "already saved";}
+            else{
+                return $table_handy;
+            }
         }
        
     }
@@ -63,17 +67,18 @@ function ObtainIdOfUser($user_obtained){
     
     //connect to server;
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
-    $query = mysqli_query($mysqli , "SELECT * from $table where from_user = '$user' ");
+    $query = mysqli_query($mysqli , "SELECT * from $table where for_user = '$user' ");
     $exist = mysqli_num_rows($query);
     $table_handy = "";
     $table_id = "";
     if($exist > 0 ){
         while($row = mysqli_fetch_assoc($query)){
-            $table_handy = $row['from_user'];
+            $table_handy = $row['for_user'];
             $table_id = $row['b_id'];
 
         }
         if($table_handy == ""){
+            
             return $table_handy;
         }else{
             return "already booked an appointment";
@@ -176,4 +181,32 @@ function checkReg($user_obtained,$user_pass){
  
 
  } //echo checkReg("admin4","admin4");
+
+ function getBio($user){
+    $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
+    
+    $response = [];
+
+    $id = 0 ;
+    mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
+    $query = mysqli_query($mysqli , "SELECT * from user where username = '$user' ");
+    $exist = mysqli_num_rows($query);
+    $table_username = "";
+    $table_bio = "";
+    if($exist > 0 ){
+        while($row = mysqli_fetch_assoc($query)){
+            $table_username = $row['username'];
+            $table_bio = $row['bio'];
+
+        }
+       
+    }
+   
+    return $table_bio;
+    
+
+ }
+
+ 
+ //echo getBio("larissa123");
 ?>

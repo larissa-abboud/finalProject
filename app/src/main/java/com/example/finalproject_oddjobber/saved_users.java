@@ -107,9 +107,7 @@ public class saved_users extends AppCompatActivity {
                     Log.i("list", result);
                     response[x - 1] = result;
 
-                }Log.i("list", response[0]);
-                    Log.i("list", response[1]);
-                    Log.i("list", response[2]);
+                }
 
 
 
@@ -204,9 +202,7 @@ public class saved_users extends AppCompatActivity {
         if(flag){
             Toast.makeText(getApplicationContext(), "not saved", Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(getApplicationContext(),response[0] , Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(),response[1] , Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(),response[2] , Toast.LENGTH_LONG).show();
+
             //Toast.makeText(getApplicationContext(),response[3] , Toast.LENGTH_LONG).show();
             the_list = new ArrayList<String>(Arrays.asList(response));
             Toast.makeText(getApplicationContext(),response[0] +the_list.get(0) , Toast.LENGTH_LONG).show();

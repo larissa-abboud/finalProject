@@ -159,10 +159,9 @@ public void contt(View v){
             cont.setAlpha(0);
             username.setText("");
             password.setText("");
-            if(todo.equalsIgnoreCase("incorrect username")){
+            if(todo.equalsIgnoreCase("incorrect password and username")){
                 Toast.makeText(getApplicationContext(),"incorrect username" , Toast.LENGTH_LONG).show();
-            }else if(todo .equalsIgnoreCase( "incorrect password")){
-                Toast.makeText(getApplicationContext(),"incorrect password" , Toast.LENGTH_LONG).show();
+
             }else{
                 Toast.makeText(getApplicationContext(),"Register to log in" , Toast.LENGTH_LONG).show();
                 signup(v);

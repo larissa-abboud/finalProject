@@ -26,19 +26,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/Untitled31_20220504030152" />
+        app:srcCompat="@drawable/box" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="192dp"
         android:layout_height="52dp"
-        android:textSize="16sp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.201" />
 
     <Button
         android:id="@+id/button2"
@@ -48,13 +49,14 @@
 
         android:backgroundTint="#2B42B3"
         android:fontFamily="sans-serif-black"
+        android:onClick="goLogin"
         android:text="Next"
         android:textSize="20sp"
+
         app:iconTint="#3F51B5"
-
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

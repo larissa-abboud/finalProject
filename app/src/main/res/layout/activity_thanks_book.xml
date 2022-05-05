@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/Untitled31_20220504030152" />
+        app:srcCompat="@drawable/box" />
 
     <ImageView
         android:id="@+id/imageView3"

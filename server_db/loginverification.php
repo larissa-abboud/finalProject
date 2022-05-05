@@ -35,7 +35,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
             //echo $table_username;
            // echo "    ";
 
-            if ($username == $table_username && $password== $table_pass){
+            if ($username == $table_username and $password== $table_pass){
                 login($username);
                 $response['error'] = false;
                 $response['message'] = "currently logged in user is ".$username;
@@ -48,20 +48,15 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
                  *              wrong password
                  *              wrong username
                  *              not registered} */
-                 if($username != $table_username){
+                 if($username != $table_username and $password != $table_pass ){
                     
                     $response['error'] = true;
-                    $response['message'] = "incorrect username"; 
+                    $response['message'] = "please sign up"; 
                     
-                 }
-                 else if($password != $table_pass){
-                    $response['error'] = true;
-                    $response['message'] = "incorrect password";
-
                  }
                  else{
                     $response['error'] = true;
-                    $response['message'] = "please sign up ";
+                    $response['message'] = "incorrect password or username ";
                  }
             }
     }

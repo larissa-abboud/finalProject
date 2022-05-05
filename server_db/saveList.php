@@ -23,10 +23,10 @@ if(
     )
     //creat another 
  {  //before we insert check if user in list
-    $check = checkUserIn("saved", $handyperson );
+    $check = checkUserIn("saved", $handyperson , $user_l );
     if($check == "already saved"){
         $response['error'] = false;
-     $response['message'] = "user saved";
+     $response['message'] = "user already saved";
 
     }
     else{

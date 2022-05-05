@@ -21,7 +21,7 @@
             android:name=".displayUser"
             android:exported="false" />
         <activity
-            android:name=".mainHome"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".thanksBook"
@@ -43,7 +43,7 @@
             android:exported="false" />
         <activity
 
-            android:name=".MainActivity"
+            android:name=".mainHome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

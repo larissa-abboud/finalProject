@@ -21,6 +21,8 @@ public class Signup extends AppCompatActivity {
     EditText username,password,bio ,name;
     Button signup;
     String todo , response ;
+    DownloadTask task ;
+    Button n ;
 
     public  class DownloadTask extends AsyncTask<String, Void, String> {
 
@@ -85,17 +87,34 @@ public class Signup extends AppCompatActivity {
         bio = (EditText) findViewById(R.id.biodetails);
         name = (EditText) findViewById(R.id.fullname);
         signup = (Button) findViewById(R.id.signup);
+        n = (Button) findViewById(R.id.button6);
+        task = new DownloadTask();
+        n.setAlpha(0);
     }
 
     public void home(View view){
         Intent intent = new Intent(getApplicationContext(), homepage.class);
         startActivity(intent);
     }
-    public void Login(View view){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+    public void signuphelp(View v){
+        Intent obj = new Intent(getApplicationContext(), thanksBooking.class);
+        obj.putExtra("username", username.getText().toString());
+        obj.putExtra("todo", todo);
+        obj.putExtra("response", response);
+        startActivity(obj);
+       // Intent intent = new Intent(getApplicationContext(), thanksBooking.class);
+        //startActivity(intent);
     }
     public void signup(View v){
+        String llink = "http://192.168.1.104/finalProject/server_db/regUser.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString()+ "&" + "full_name=" + name.getText().toString()+ "&" + "bio=" + bio.getText().toString();
+
+        task.execute(llink);
+        //signuphelp(v);
+        n.setAlpha(1);
+
+
+        //intent to thanks book
+        //intent  todo , response,
 
 
         //post api to register user

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     String response;
     Button cont;
     boolean flag = false ; // will indicate the result of the api
-    String url = "http://192.168.1.104/finalProject/server_db/loginverification.php";
+    String url = "http://10.31.200.210/finalProject/server_db/loginverification.php";
     //post
     DownloadTask task;
     //get
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void LogIn(View v) {
-        String llink = "http://192.168.1.104/finalProject/server_db/loginverification.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString();
+        String llink = "http://10.31.200.210/finalProject/server_db/loginverification.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString();
 
         task.execute(llink);
         cont.setAlpha(1);

@@ -2,7 +2,7 @@
 
 /**
  *  api
- * recive input from user check if in database 
+ * recive input from user check if in database and updated table currently logged in
  */
 
 session_start();
@@ -44,7 +44,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
 
                 /**add options{
                  *              wrong password
-                 *              wrong username
+                 *              or wrong username
                  *              not registered} */
                  if($username != $table_username and $password != $table_pass ){
                     

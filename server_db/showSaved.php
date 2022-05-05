@@ -1,5 +1,6 @@
 <?php
-/**gets logged in user (loop threw each row , check if user_list = currently logged in user id , add to json array)
+/**get api
+ * gets logged in user 
  * prints all data in  list format
  * 
  */
@@ -36,7 +37,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
             
                 $count++;
             $table_handy_person = $row['handy_person']?? null;
-           // echo $table_handy_person;
+           
            $response[$count] = " : ".getBio($table_handy_person) ?? "none";
              $response['handy_person'.$count] = $table_handy_person ;
              

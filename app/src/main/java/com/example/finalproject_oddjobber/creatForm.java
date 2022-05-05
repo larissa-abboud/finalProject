@@ -23,7 +23,7 @@ public class creatForm extends AppCompatActivity {
     Button send, next;
     EditText time_app , context;
     String result ,todo;
-    String url = "http://192.168.1.104/finalProject/server_db/BookApp.php";
+    String url = "http://10.31.200.210/finalProject/server_db/BookApp.php";
     String name ,chosen;
     ImageView m ;
     //String responses;

@@ -1,12 +1,11 @@
 <?php 
-//helper methods
-/** get the current user logged in
- *  get the  id of a user 
+//
+/**  functions that are used in the apis.
  */
 
 $response = [];
 function ObtainIdOfUser($user_obtained){
-    //get method: return id 
+    //takes username, return id 
     //session_start();
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
@@ -17,7 +16,7 @@ function ObtainIdOfUser($user_obtained){
     $table_username = "";
     $table_id = "";
     if($exist > 0 ){
-       // echo $user_obtained;
+      
         while($row = mysqli_fetch_assoc($query)){
             $table_username = $row['username'];
             $table_id = $row['id'];
@@ -38,6 +37,7 @@ function ObtainIdOfUser($user_obtained){
 
  }
  function checkUserIn($table , $user ,$id){
+     //check if handyperson is in saved list of currently logged in user
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
     
@@ -68,29 +68,36 @@ function ObtainIdOfUser($user_obtained){
     
 
  }
- function checkUserInappointments($table , $user){
+ function checkUserInappointments($table , $user,$time ){
+     // check if apointment requested with a user is occupied
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
     
     //connect to server;
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
-    $query = mysqli_query($mysqli , "SELECT for_user from $table where for_user = '$user' ");
+    $query = mysqli_query($mysqli , "SELECT for_user ,time_needed  from $table where for_user = '$user' ");
     $exist = mysqli_num_rows($query);
-    //$row = mysqli_fetch_assoc($query);
+    
     $table_handy = "";
-    //$table_id = "";
+    $table_time = "";
+    $table_details = "";
     
     
     if($exist > 0 ){
         while($row = mysqli_fetch_assoc($query)){
             $table_handy = $row['for_user'];
-           // $table_id = $row['b_id'];
-           //echo $table_handy;
+            $table_time = $row['time_needed'];
+           
+           
 
-        }//echo $table_handy;
+        }
         if($table_handy != ""){
+            if($table_time == $time ){
+
+            //and same time and 
             
-            return "already booked an appointment";//
+            
+            return "already booked an appointment";}
         }else{
             return $table_handy;
         }
@@ -101,11 +108,10 @@ function ObtainIdOfUser($user_obtained){
 
  }
  function getCurrentUser(){
-     //get method : return username
+     // return username of the current user who recently logged in
     
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
-    //$user_obtained = "admin2";
-    //$username = mysqli_real_escape_string($mysqli , $_POST['username']);
+    
     $response = [];
 
     //connect to server;
@@ -116,7 +122,7 @@ function ObtainIdOfUser($user_obtained){
     $row = mysqli_fetch_assoc($query);
 
     $table_usernam = "";
-    //$table[$key] ?? null;
+    
     $table_id = 0;
     if($exist > 0  ){
         while($row = mysqli_fetch_assoc($query)and $id <=$table_id ){
@@ -131,29 +137,21 @@ function ObtainIdOfUser($user_obtained){
    
     return $table_usernam;
 
- }/*
- $current = getCurrentUser();
- $response['username'] = $current;
- $json_response = json_encode($response);
- echo $json_response;*/
+ }
 
 
 
-/**
- * obtain username from databse 
- * serach threw the databe for user name
- * return id of username to savelist 
- */
+
 
  /**gets the username an pass
   * check in user db 
-  if both then alredy reg
+  if both then already reg
   if username then username taken
   if non then insert in db
   */
   $response = [];
 function checkReg($user_obtained,$user_pass){
-    //get method: return id 
+    // return dlag if in or not reg with conditions
     //session_start();
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
@@ -187,13 +185,14 @@ function checkReg($user_obtained,$user_pass){
     }
    
     return $flag;
-   //regUser.php?username=larissa123&pass=abb&full_name=larissabboud&bio=bio
+  
 
  
 
- } //echo checkReg("admin4","admin4");
+ } 
 
  function getBio($user){
+     //obtain bio of user
     $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());
     
     $response = [];
@@ -219,5 +218,5 @@ function checkReg($user_obtained,$user_pass){
  }
 
  
- //echo getBio("larissa123");
+ 
 ?>

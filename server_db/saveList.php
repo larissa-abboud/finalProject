@@ -15,14 +15,13 @@ $name = getCurrentUser();
 
 $handyperson = $_GET["handy_person"] ??"" ;
 
-$user_l = ObtainIdOfUser($name); //return id of user logged in
-//$userlist = $_GET["user_list"] ??"";
+$user_l = ObtainIdOfUser($name); 
 $response = [];
 if(
     (!empty($handyperson )) 
     )
-    //creat another 
- {  //before we insert check if user in list
+    
+ {  
     $check = checkUserIn("saved", $handyperson , $user_l );
     if($check == "already saved"){
         $response['error'] = true;
@@ -44,7 +43,7 @@ if(
  
  
  $json_response = json_encode($response);
- //echo $user_l;
+ 
  echo $json_response;
 
 ?>

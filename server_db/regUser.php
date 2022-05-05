@@ -1,7 +1,8 @@
 <?php
-//post api send
+//post api to sign up
 // send data(user name and password to register user) to the database and obtaining the results
-include("db_connect.php");include("getUserOfList.php");
+include("db_connect.php");
+include("getUserOfList.php");
 
 
 $username = $_GET["username"] ??"" ;

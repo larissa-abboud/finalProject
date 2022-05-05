@@ -23,7 +23,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class displayUser extends AppCompatActivity {
     Button home;
     TextView display;
-    String url = "http://192.168.1.104/finalProject/server_db/getLogin.php";
+    String url = "http://10.31.200.210/finalProject/server_db/getLogin.php";//10.31.200.210
     String result;
     String response;
 

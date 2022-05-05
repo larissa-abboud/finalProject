@@ -1,6 +1,6 @@
 <?php
 
-/**get api that displays the users so and option to save or request */
+/**get api that displays the users  */
 
 session_start();
 $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_error());

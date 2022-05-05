@@ -106,7 +106,7 @@ public class Signup extends AppCompatActivity {
         //startActivity(intent);
     }
     public void signup(View v){
-        String llink = "http://192.168.1.104/finalProject/server_db/regUser.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString()+ "&" + "full_name=" + name.getText().toString()+ "&" + "bio=" + bio.getText().toString();
+        String llink = "http://10.31.200.210/finalProject/server_db/regUser.php" + "?username=" + username.getText().toString() + "&" + "pass=" + password.getText().toString()+ "&" + "full_name=" + name.getText().toString()+ "&" + "bio=" + bio.getText().toString();
 
         task.execute(llink);
         //signuphelp(v);

@@ -34,7 +34,7 @@ public class saved_users extends AppCompatActivity {
     Spinner dropdown;
     String text_list;
 
-    String url = "http://192.168.1.104/finalProject/server_db/showSaved.php";
+    String url = "http://10.31.200.210/finalProject/server_db/showSaved.php";
     String result;
     String[] response;
     String [] options;
@@ -192,7 +192,8 @@ public class saved_users extends AppCompatActivity {
 
 
         if(flag){
-            Toast.makeText(getApplicationContext(), "no users saved", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "No profiles saved , go back to save profiles in Handy person", Toast.LENGTH_LONG).show();
+
         }else{
 
             //Toast.makeText(getApplicationContext(),response[3] , Toast.LENGTH_LONG).show();
@@ -238,6 +239,10 @@ public class saved_users extends AppCompatActivity {
         //create list
         //create spinner
         //cond =  cannot book an appointment twice for the same user , in php(check if added is already in list)
-
+        public void back(View v){
+            Intent intent = new Intent(getApplicationContext(), homepage.class);
+            startActivity(intent);
+        }
     }
+
 

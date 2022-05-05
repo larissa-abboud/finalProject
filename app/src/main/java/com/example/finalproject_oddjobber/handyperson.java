@@ -26,16 +26,16 @@ import java.util.Arrays;
 
 public class handyperson extends AppCompatActivity {
     TextView user_chosen;
-    Button show_handy,save_user;
+    Button show_handy,save_user , home;
     ListView my_list;
-    ArrayList<String> the_list;
-    ArrayAdapter<String> adapter;
+    ArrayList<String> the_list , the_list2;
+    ArrayAdapter<String> adapter, adapter2;
     Spinner dropdown;
     boolean flag;
     int size ;
-    String text_list , result ,response[] ,todo,chosen;
-    String url = "http://192.168.1.104/finalProject/server_db/displayUsers.php";
-    String url_post = "http://192.168.1.104/finalProject/server_db/saveList.php";
+    String text_list , result ,response[] ,todo,options[];
+    String url = "http://10.31.200.210/finalProject/server_db/displayUsers.php";
+    String url_post = "http://10.31.200.210/finalProject/server_db/saveList.php";
     DownloadTask task ;
     public  class DownloadTask extends AsyncTask<String, Void, String> {
         //run in parallel with the app
@@ -105,12 +105,16 @@ public class handyperson extends AppCompatActivity {
                     //flag = true;
 
                     size = json.length();
+                    options = new String[(size)/2];
                     response = new String[(size)/2];// -1 to not get null pointer in list view
                     while( x < (json.length())/2) {
                         //fix
 
                         x++;
                         String result = json.getString("user" + x);
+                        String result_bio = json.getString("" + x);
+                        Log.i("list", result + result_bio);
+                        options[x-1] = result+result_bio;
                         Log.i("list", result);
                         response[x -1] = result;
                         Log.i("res", response[x-1]);
@@ -145,6 +149,7 @@ public class handyperson extends AppCompatActivity {
         save_user = (Button) findViewById(R.id.saveuser);
         my_list = (ListView) findViewById(R.id.myList);
         dropdown =  findViewById(R.id.users_saved);
+        home = (Button) findViewById(R.id.gohomepage);
         flag = false;
         DownloadTask task = new DownloadTask();
         task.execute(url);
@@ -163,20 +168,25 @@ public class handyperson extends AppCompatActivity {
     }
 
     public void show_handyperson_list(View v){
-        the_list = new ArrayList<String>(Arrays.asList(response));
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, the_list);
+        the_list = new ArrayList<String>(Arrays.asList(options));
+        //Toast.makeText(getApplicationContext(),response[0] +the_list.get(0) , Toast.LENGTH_LONG).show();
+        ;
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,the_list);
         my_list.setAdapter(adapter);
+        the_list2 = new ArrayList<String>(Arrays.asList(response));
+        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,the_list2);
+
+
+
+        //load list from database
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        my_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"choose from the dropdown" , Toast.LENGTH_LONG).show();
-                //the_list.get(i)
-            }
-        });
+
+
         //the_list.add("I'm adding from JAVA");
         my_list.setAdapter(adapter);
-        dropdown.setAdapter(adapter);
+        dropdown.setAdapter(adapter2);
         //get api,list
     }
     public void save(View v){
@@ -191,4 +201,8 @@ public class handyperson extends AppCompatActivity {
         home(v);
         //cond =  cannot save user twice, in php(check if added is already in list)
     }
+    public void back(View v){
+        home(v);
+    }
+
 }

@@ -25,7 +25,7 @@ if(
  {  //before we insert check if user in list
     $check = checkUserIn("saved", $handyperson , $user_l );
     if($check == "already saved"){
-        $response['error'] = false;
+        $response['error'] = true;
      $response['message'] = "user already saved";
 
     }

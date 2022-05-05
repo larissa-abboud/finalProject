@@ -12,20 +12,27 @@ function ObtainIdOfUser($user_obtained){
     
     //connect to server;
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
-    $query = mysqli_query($mysqli , "SELECT * from user where username = '$user_obtained' ");
+    $query = mysqli_query($mysqli , "SELECT * from user  ");
     $exist = mysqli_num_rows($query);
     $table_username = "";
     $table_id = "";
     if($exist > 0 ){
+       // echo $user_obtained;
         while($row = mysqli_fetch_assoc($query)){
             $table_username = $row['username'];
             $table_id = $row['id'];
 
+            if($table_username == $user_obtained){
+            return $table_id;
+        }
+            
+
         }
        
     }
+    
    
-    return $table_id;
+    
 
  
 
@@ -67,21 +74,25 @@ function ObtainIdOfUser($user_obtained){
     
     //connect to server;
     mysqli_select_db($mysqli ,"oddjobberdb") or due("cannot connect to database");
-    $query = mysqli_query($mysqli , "SELECT * from $table where for_user = '$user' ");
+    $query = mysqli_query($mysqli , "SELECT for_user from $table where for_user = '$user' ");
     $exist = mysqli_num_rows($query);
+    //$row = mysqli_fetch_assoc($query);
     $table_handy = "";
-    $table_id = "";
+    //$table_id = "";
+    
+    
     if($exist > 0 ){
         while($row = mysqli_fetch_assoc($query)){
             $table_handy = $row['for_user'];
-            $table_id = $row['b_id'];
+           // $table_id = $row['b_id'];
+           //echo $table_handy;
 
-        }
-        if($table_handy == ""){
+        }//echo $table_handy;
+        if($table_handy != ""){
             
-            return $table_handy;
+            return "already booked an appointment";//
         }else{
-            return "already booked an appointment";
+            return $table_handy;
         }
        
     }

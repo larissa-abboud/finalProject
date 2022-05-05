@@ -95,22 +95,39 @@
         app:layout_constraintVertical_bias="0.323"
         app:srcCompat="@drawable/framlong" />
 
+
     <Button
         android:id="@+id/gohomepage"
-        android:layout_width="164dp"
-        android:layout_height="74dp"
+        android:layout_width="138dp"
+        android:layout_height="58dp"
         android:backgroundTint="#050817"
+
         android:fontFamily="sans-serif-black"
         android:onClick="sendForm"
         android:text="Send"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.732" />
 
+    <Button
+        android:id="@+id/gocheck"
+        android:layout_width="138dp"
+        android:layout_height="58dp"
+        android:backgroundTint="#050817"
+        android:fontFamily="sans-serif-black"
+        android:onClick="check"
+        android:text="cont"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.732" />
 
     <ImageView
         android:id="@+id/imageView16"

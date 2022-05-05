@@ -19,11 +19,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class creatForm extends AppCompatActivity {
-    Button send;
+    Button send, next;
     EditText time_app , context;
     String result ,todo;
     String url = "http://192.168.1.104/finalProject/server_db/BookApp.php";
-    String name ;
+    String name ,chosen;
+    //String responses;
     public  class DownloadTask extends AsyncTask<String, Void, String> {
         //run in parallel with the app
         protected String doInBackground(String... urls){
@@ -73,12 +74,14 @@ public class creatForm extends AppCompatActivity {
             try{
 
                     JSONObject json2 = new JSONObject(s);
+                    String che = json2.getString("id");
+                Log.i("status",che);
 
                     String responses = json2.getString("error");
                     todo = json2.getString("message");
                     Log.i("status", responses);
                     Log.i("msg", todo);
-                    //chosen = responses;
+                    chosen = responses;
 
 
 
@@ -99,11 +102,12 @@ public class creatForm extends AppCompatActivity {
         time_app = (EditText) findViewById(R.id.time);
         context = (EditText) findViewById(R.id.details);
         send = (Button) findViewById(R.id.gohomepage);
+        next = (Button) findViewById(R.id.gocheck);
         Intent x = getIntent();
          name = x.getStringExtra("username");
-        Toast.makeText(getApplicationContext(), " " , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), " " , Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), name + " is the handyperson" , Toast.LENGTH_LONG).show();
-
+        next.setAlpha(0);
     }
     public void status(View view){
         Intent intent = new Intent(getApplicationContext(), thanksBook.class);
@@ -114,10 +118,13 @@ public class creatForm extends AppCompatActivity {
 
         String link = url + "?time_needed="+time_app.getText().toString()+ "&"+ "details="+context.getText().toString()+"&"+"for_user="+name;
         DownloadTask task = new DownloadTask();
+
         task.execute(link);
+
         Log.i("name", name);
         Log.i("time", time_app.getText().toString());
         Log.i("d", context.getText().toString());
+        next.setAlpha(1);
 
 
         /**
@@ -125,9 +132,25 @@ public class creatForm extends AppCompatActivity {
          * username obtained from saved user intent
          * goes to status
          * */
-        //status(v);
-        /*
-        *  */
+        //Log.i("status", responses);
+        /*if(chosen.equalsIgnoreCase("false")){
+        //status(v);}
+            Toast.makeText(getApplicationContext(),todo  , Toast.LENGTH_LONG).show();}
+        else{
+            Toast.makeText(getApplicationContext(),todo  , Toast.LENGTH_LONG).show();
+        }*/
     }
+    public void check(View v){
+        Log.i("status", chosen);
+        if(todo.equalsIgnoreCase("Apointment booked")){
+            status(v);
+        }else{
+            Toast.makeText(getApplicationContext(),todo  , Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), saved_users.class);
+            startActivity(intent);
+        }
+    }
+
+
 
 }

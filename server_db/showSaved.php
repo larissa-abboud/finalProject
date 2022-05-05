@@ -27,6 +27,7 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
        // echo $table_id;
        $response ['empty'] = "not";
        $response['handy_person'.$count] = $row['handy_person'];
+       $response[$count] = " : ".getBio( $row['handy_person']) ;
        
         while($row = mysqli_fetch_assoc($query)  ){
             
@@ -38,7 +39,8 @@ $mysqli = mysqli_connect("localhost", "root" , "", "oddjobberdb") or die(mysqli_
                 $count++;
             $table_handy_person = $row['handy_person']?? null;
            // echo $table_handy_person;
-             $response['handy_person'.$count] = $table_handy_person ." : ".getBio($table_handy_person);
+           $response[$count] = " : ".getBio($table_handy_person) ?? "none";
+             $response['handy_person'.$count] = $table_handy_person ;
              
         //
             

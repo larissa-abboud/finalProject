@@ -8,23 +8,28 @@ $details = $_GET["details"] ??"";
 $username = $_GET["for_user"] ??"";
 $response = [];
 include("getUserOfList.php");
-$user_id =  ObtainIdOfUser($username);
+$user_id = ObtainIdOfUser($username);
+//echo $user_id;
 
 if(
    (!empty($time)) and 
    ( !empty($details))and(!empty($username)))
    // $paass = md5($pass);
-{ $check  =checkUserInappointments('book_app' , $user_id);
+{ 
+    $check  = checkUserInappointments("book_app" , $user_id);
     if($check == "already booked an appointment"){
+        $response['id'] = $user_id;
         $response['error'] = true;
-    $response['message'] = "already booked an appointment";
+    $response['message'] = "already booked an appointment".$check;
     }
     else{
     $query = $mysqli->prepare("INSERT INTO book_app (time_needed, details, for_user) VALUES (?, ?,?);");
 $query->bind_param("ssi", $time, $details, $user_id);
 $query->execute();
+$response['id'] = $check;
+
     $response['error'] = false;
-    $response['message'] = "Apointment booked";$response['from'] = $username;
+    $response['message'] = "Apointment booked".$check;
     }}else {
         
     $response['error'] = true;
